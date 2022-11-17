@@ -29,7 +29,7 @@ resource "ibm_network_gateway" "gateway" {
     tcp_monitoring       = true
     process_key_name     = "INTEL_INTEL_XEON_E52620_V4_2_10"
     os_key_name          = "OS_VIRTUAL_ROUTER_APPLIANCE_20_X_UP_TO_20_GBPS_SUBSCRIPTION_EDITION_64_BIT"
-    package_key_name     = "2U_NETWORK_GATEWAY_APPLIANCE_1O_GBPS"
+    package_key_name     = "VIRTUAL_ROUTER_APPLIANCE_10_GPBS"
     redundant_network    = false
     disk_key_names       = ["HARD_DRIVE_2_00TB_SATA_II"]
     public_bandwidth     = 20000
