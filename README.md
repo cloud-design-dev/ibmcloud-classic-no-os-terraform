@@ -32,13 +32,12 @@ This code will create the following resources:
 3. Open `terraform.tfvars` in your text editor and fill in the required variables. See the [inputs](./TFINFO.md#inputs) file for the variable definitions and types.
 
 4. Intitialize Terraform and create deployment plan
-
 If everything is configured properly you can now move on to initializing Terraform and running a plan to see the proposed deployment
 
-   ```shell
-   terraform init
-   terraform plan -out default.tfplan
-   ```
+    ```shell
+    terraform init
+    terraform plan -out default.tfplan
+    ```
    
 5. Deploy classic resources
 
