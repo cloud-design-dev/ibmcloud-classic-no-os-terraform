@@ -1,0 +1,9 @@
+<!-- BEGIN_TF_DOCS -->
+datacenter            = ""
+domain_name           = "example.com"
+existing_ssh_key      = ""
+host_count            = 4
+iaas_classic_api_key  = ""
+iaas_classic_username = ""
+project               = ""
+<!-- END_TF_DOCS -->

@@ -4,7 +4,7 @@ variable "private_vlan" {}
 variable "datacenter" {}
 variable "domain_name" {}
 variable "tags" {}
-variable "ssh_key_id" {}
+variable "ssh_key_ids" {}
 variable "local_disk" {}
 ## Variables with default values 
 variable "network_speed" {

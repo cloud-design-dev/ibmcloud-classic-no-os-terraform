@@ -18,5 +18,5 @@ resource "ibm_compute_vm_instance" "instance" {
   tags                     = var.tags
   dedicated_acct_host_only = false
   ipv6_enabled             = true
-  ssh_key_ids              = [var.ssh_key_id]
+  ssh_key_ids              = var.ssh_key_ids
 }

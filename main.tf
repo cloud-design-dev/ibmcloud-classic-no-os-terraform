@@ -25,7 +25,6 @@ resource "ibm_compute_ssh_key" "project" {
 module "vlans" {
   source     = "./modules/vlans"
   datacenter = var.datacenter
-  vlan_name  = "${var.project}-vlan"
   tags       = local.tags
 }
 
@@ -40,7 +39,9 @@ module "gateway-appliances" {
 }
 
 module "bare-metal-hosts" {
-  count        = var.host_count
+  # Setting to 1 for testing, so I don't have to wait for 4 hosts to provision.
+  # Set to `var.host_count` when done and validated.
+  count        = 1
   source       = "./modules/compute-bare-metal"
   name         = "${var.project}-vmware-host-${count.index}"
   datacenter   = var.datacenter
@@ -59,6 +60,6 @@ module "virtual-machines" {
   public_vlan  = module.vlans.public_compute_vlan
   private_vlan = module.vlans.private_compute_vlan
   local_disk   = true
-  ssh_key_id   = local.ssh_key_ids
+  ssh_key_ids  = local.ssh_key_ids
   tags         = local.tags
 }
