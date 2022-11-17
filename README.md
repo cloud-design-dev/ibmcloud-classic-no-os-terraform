@@ -46,3 +46,10 @@ If everything is configured properly you can now move on to initializing Terrafo
     terraform apply
     ```
     
+## Todo
+
+ - [ ] Update requirements for `ibmcloud` CLI 
+ - [ ] Move Classic VSI creation to be directly after the VLAN creation. 
+ - [ ] Use `local-exec` to create support ticket with the VLAN Number and Classic VSI Private IP directly adter the Classic VSI creation
+ - [ ] Test in cloud shell 
+ - [ ] Create Schematics Deploy button
