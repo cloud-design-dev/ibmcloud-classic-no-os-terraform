@@ -1,6 +1,6 @@
 # Example Roll Your Own VMware on Classic
 
-The following code creates the following resources:
+This code will create the following resources:
 
  - New Public and Private VLANs for BM and Virtual instances
  - Bare Metal hosts with NO_OS (VMware will be loaded via IPMI ISO)
@@ -17,4 +17,32 @@ The following code creates the following resources:
 
 ## Deploy Resources
 
-see [inputs](./TFINFO.md#inputs)
+1. Clone repository
+    
+    ```shell
+    git clone https://github.com/greyhoundforty/rh-vmware-classic-terraform.git
+    cd rh-vmware-classic-terraform
+    ```
+
+2. Move and update `tfvars` file. *Note*: The gitignore file in this repository will not track your `tfvars` file so if you are running this in a CI/CD system you will have to provide the variables at runtime
+
+    ```shell
+    cp terraform-tfvars-examples terraform.tfvars
+    
+3. Open `terraform.tfvars` in your text editor and fill in the required variables. See the [inputs](./TFINFO.md#inputs) file for the variable definitions and types.
+
+4. Intitialize Terraform and create deployment plan
+
+If everything is configured properly you can now move on to initializing Terraform and running a plan to see the proposed deployment
+
+   ```shell
+   terraform init
+   terraform plan -out default.tfplan
+   ```
+   
+5. Deploy classic resources
+
+    ```shell
+    terraform apply
+    ```
+    
