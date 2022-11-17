@@ -11,9 +11,10 @@ This code will create the following resources:
 
 | Name | Description |
 |------|---------|
-<a name="Classic IaaS API Key"></a> [Classic IaaS API Key](https://cloud.ibm.com/docs/account?topic=account-classic_keys) | Classic IaaS API Key with permissions to deploy and manage infrastructure |
-<a name="Classic IaaS Username"></a> [Classic IaaS Username](https://cloud.ibm.com/docs/account?topic=account-classic_keys) | Classic IaaS Username with permissions to deploy and manage infrastructure |
-<a name="Terraform"></a> [Terraform](https://developer.hashicorp.com/terraform/downloads?) | Terraform installed locally |
+| <a name="Classic IaaS API Key"></a> [Classic IaaS API Key](https://cloud.ibm.com/docs/account?topic=account-classic_keys) | Classic IaaS API Key with permissions to deploy and manage infrastructure |
+| <a name="Classic IaaS Username"></a> [Classic IaaS Username](https://cloud.ibm.com/docs/account?topic=account-classic_keys) | Classic IaaS Username with permissions to deploy and manage infrastructure |
+| <a name="Terraform"></a> [Terraform](https://developer.hashicorp.com/terraform/downloads?) | Terraform installed locally |
+| <a name="IBM Cloud CLI"></a>[IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli) | IBM Cloud CLI installed |
 
 ## Deploy Resources
 
@@ -48,7 +49,7 @@ If everything is configured properly you can now move on to initializing Terrafo
     
 ## Todo
 
- - [ ] Update requirements for `ibmcloud` CLI 
+ - [x] Update requirements for `ibmcloud` CLI 
  - [ ] Move Classic VSI creation to be directly after the VLAN creation. 
  - [ ] Use `local-exec` to create support ticket with the VLAN Number and Classic VSI Private IP directly adter the Classic VSI creation
  - [ ] Test in cloud shell 

@@ -28,30 +28,8 @@ module "vlans" {
   tags       = local.tags
 }
 
-module "gateway-appliances" {
-  source       = "./modules/gateway-appliance"
-  datacenter   = var.datacenter
-  gateway_name = "${var.project}-gateway"
-  domain_name  = var.domain_name
-  public_vlan  = module.vlans.public_compute_vlan
-  private_vlan = module.vlans.private_compute_vlan
-  tags         = local.tags
-}
-
-module "bare-metal-hosts" {
-  # Setting to 1 for testing, so I don't have to wait for 4 hosts to provision.
-  # Set to `var.host_count` when done and validated.
-  count        = 1
-  source       = "./modules/compute-bare-metal"
-  name         = "${var.project}-vmware-host-${count.index}"
-  datacenter   = var.datacenter
-  domain_name  = var.domain_name
-  public_vlan  = module.vlans.public_compute_vlan
-  private_vlan = module.vlans.private_compute_vlan
-  tags         = local.tags
-}
-
 module "virtual-machines" {
+  depends_on = [module.vlans]
   source       = "./modules/compute-virtual"
   count        = 1
   name         = "${var.project}-virtual-instance"
@@ -61,5 +39,30 @@ module "virtual-machines" {
   private_vlan = module.vlans.private_compute_vlan
   local_disk   = true
   ssh_key_ids  = local.ssh_key_ids
+  tags         = local.tags
+}
+
+module "gateway-appliances" {
+  depends_on = [module.virtual-machines]
+  source       = "./modules/gateway-appliance"
+  datacenter   = var.datacenter
+  gateway_name = "${var.project}-gateway"
+  domain_name  = var.domain_name
+  public_vlan  = module.vlans.public_compute_vlan
+  private_vlan = module.vlans.private_compute_vlan
+  tags         = local.tags
+}
+
+# Setting to 1 for testing, so I don't have to wait for 4 hosts to provision.
+# Set to `var.host_count` when done and validated.
+module "bare-metal-hosts" {
+  depends_on = [module.gateway-appliances]
+  count        = 1
+  source       = "./modules/compute-bare-metal"
+  name         = "${var.project}-vmware-host-${count.index}"
+  datacenter   = var.datacenter
+  domain_name  = var.domain_name
+  public_vlan  = module.vlans.public_compute_vlan
+  private_vlan = module.vlans.private_compute_vlan
   tags         = local.tags
 }
