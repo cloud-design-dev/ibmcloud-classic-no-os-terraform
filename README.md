@@ -47,9 +47,9 @@
 
 | Name | Description |
 |------|-------------|
-| <a name="output_bare_metal_host_ids"></a> [bare\_metal\_host\_ids](#output\_bare\_metal\_host\_ids) | n/a |
-| <a name="output_bare_metal_host_private_ips"></a> [bare\_metal\_host\_private\_ips](#output\_bare\_metal\_host\_private\_ips) | n/a |
-| <a name="output_bare_metal_host_public_ips"></a> [bare\_metal\_host\_public\_ips](#output\_bare\_metal\_host\_public\_ips) | n/a |
-| <a name="output_bare_metal_hosts"></a> [bare\_metal\_hosts](#output\_bare\_metal\_hosts) | n/a |
-| <a name="output_virtual_machine"></a> [virtual\_machine](#output\_virtual\_machine) | n/a |
+| <a name="output_bare_metal_host_ids"></a> [bare\_metal\_host\_ids](#output\_bare\_metal\_host\_ids) | Returns host IDs for all deployed bare metal servers. |
+| <a name="output_bare_metal_host_private_ips"></a> [bare\_metal\_host\_private\_ips](#output\_bare\_metal\_host\_private\_ips) | Returns host Private Ips for all deployed bare metal servers. |
+| <a name="output_bare_metal_host_public_ips"></a> [bare\_metal\_host\_public\_ips](#output\_bare\_metal\_host\_public\_ips) | Returns host Public Ips for all deployed bare metal servers. |
+| <a name="output_bare_metal_hosts"></a> [bare\_metal\_hosts](#output\_bare\_metal\_hosts) | Returns host info for all deployed bare metal servers. |
+| <a name="output_virtual_machine"></a> [virtual\_machine](#output\_virtual\_machine) | Returns host info for all deployed virtual instance. |
 <!-- END_TF_DOCS -->
