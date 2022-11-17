@@ -28,6 +28,7 @@ This code will create the following resources:
 
     ```shell
     cp terraform-tfvars-examples terraform.tfvars
+    ```
     
 3. Open `terraform.tfvars` in your text editor and fill in the required variables. See the [inputs](./TFINFO.md#inputs) file for the variable definitions and types.
 
