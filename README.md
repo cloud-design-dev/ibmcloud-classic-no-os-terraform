@@ -13,8 +13,10 @@ This code will create the following resources:
 |------|---------|
 | <a name="Classic IaaS API Key"></a> [Classic IaaS API Key](https://cloud.ibm.com/docs/account?topic=account-classic_keys) | Classic IaaS API Key with permissions to deploy and manage infrastructure |
 | <a name="Classic IaaS Username"></a> [Classic IaaS Username](https://cloud.ibm.com/docs/account?topic=account-classic_keys) | Classic IaaS Username with permissions to deploy and manage infrastructure |
-| <a name="Terraform"></a> [Terraform](https://developer.hashicorp.com/terraform/downloads?) | Terraform installed locally |
-| <a name="IBM Cloud CLI"></a>[IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli) | IBM Cloud CLI installed |
+| (If running local)<a name="Terraform"></a> [Terraform](https://developer.hashicorp.com/terraform/downloads?) | Terraform installed locally |
+| (If running local)<a name="IBM Cloud CLI"></a>[IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cli-install-ibmcloud-cli) | IBM Cloud CLI installed |
+
+If you don't have Terraform or the IBM Cloud CLI installed locally, you can use [IBM Cloud Shell](https://cloud.ibm.com/shell) to deploy the resources. 
 
 ## Deploy Resources
 

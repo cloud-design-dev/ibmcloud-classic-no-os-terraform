@@ -23,7 +23,7 @@ output "virtual_machine" {
   value       = module.virtual-machines[0].instance
 }
 
-output "private_vlan_number" {
-    description = "Returns the private VLAN number."
-    value       = module.vlans.private_compute_vlan.number
+output "private_vlan" {
+  description = "Returns the private VLAN info."
+  value       = module.vlans.private_compute_vlan
 }

@@ -24,9 +24,4 @@ resource "ibm_compute_bare_metal" "host" {
     array_size  = 960
 
   }
-    timeouts {
-    create = "120m"
-    update = "120m"
-    delete = "90m"
-  }
 }
