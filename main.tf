@@ -65,7 +65,7 @@ module "gateway-appliances" {
 # Set to `var.host_count` when done and validated.
 module "bare-metal-hosts" {
   depends_on   = [module.gateway-appliances]
-  count        = 1
+  count        = var.host_count
   source       = "./modules/compute-bare-metal"
   name         = "${var.project}-vmware-host-${count.index}"
   datacenter   = var.datacenter
