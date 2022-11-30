@@ -21,6 +21,7 @@ resource "null_resource" "login_to_ibmcli" {
   provisioner "local-exec" {
     command = "ibmcloud login -r ${var.datacenter}"
   }
+}
 
 resource "null_resource" "create_ticket" {
   provisioner "local-exec" {
