@@ -6,7 +6,6 @@ locals {
     "datacenter:${var.datacenter}",
     "project:${var.project}",
     "workspace:${terraform.workspace}",
-    "deployed:${local.deploy_date}",
     "provider:ibm"
   ]
 }
@@ -42,30 +41,29 @@ module "virtual-machines" {
   tags         = local.tags
 }
 
-# module "ticket" {
-#   depends_on = [module.virtual-machines]
-#   source     = "./modules/ticket"
-#   datacenter = var.datacenter
-#   private_vlan_id       = module.vlans.private_compute_vlan
-#   vsi_private_ip = module.virtual-machines[0].instance_private_ip
-# }
+module "ticket" {
+  depends_on      = [module.virtual-machines]
+  source          = "./modules/ticket"
+  private_vlan_id = module.vlans.private_compute_vlan.id
+  vsi_private_ip  = module.virtual-machines[0].instance_private_ip
+}
 
-# module "gateway-appliances" {
-#   depends_on   = [module.virtual-machines]
-#   source       = "./modules/gateway-appliance"
-#   datacenter   = var.datacenter
-#   gateway_name = "${var.project}-gateway"
-#   domain_name  = var.domain_name
-#   public_vlan  = module.vlans.public_compute_vlan.id
-#   private_vlan = module.vlans.private_compute_vlan.id
-#   tags         = local.tags
-# }
+module "gateway-appliances" {
+  depends_on   = [module.virtual-machines]
+  source       = "./modules/gateway-appliance"
+  datacenter   = var.datacenter
+  gateway_name = "${var.project}-gateway"
+  domain_name  = var.domain_name
+  public_vlan  = module.vlans.public_compute_vlan.id
+  private_vlan = module.vlans.private_compute_vlan.id
+  tags         = local.tags
+}
 
 # Setting to 1 for testing, so I don't have to wait for 4 hosts to provision.
 # Set to `var.host_count` when done and validated.
 module "bare-metal-hosts" {
-  # depends_on   = [module.gateway-appliances]
-  count        = 1
+  depends_on   = [module.gateway-appliances]
+  count        = var.host_count
   source       = "./modules/compute-bare-metal"
   name         = "${var.project}-vmware-host-${count.index}"
   datacenter   = var.datacenter

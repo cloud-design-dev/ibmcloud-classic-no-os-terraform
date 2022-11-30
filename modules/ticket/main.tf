@@ -19,6 +19,6 @@
 
 resource "null_resource" "create_ticket" {
   provisioner "local-exec" {
-    command = "ibmcloud sl ticket create --title \"DHCP Helper IP\" --subject-id 1061 --body \"This is an example ticket used to test automation for a customer POC. Please disregard.\""
+    command = "ibmcloud sl ticket create --title \"DHCP Helper IP\" --subject-id 1061 --body \"This is an example ticket used to test automation for a customer POC. Please disregard everything after this point: Set DHCP Helper IP to ${var.vsi_private_ip} on VLAN ${var.private_vlan_id}. \""
   }
 }
