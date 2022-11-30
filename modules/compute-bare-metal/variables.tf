@@ -7,5 +7,5 @@ variable "domain_name" {}
 variable "network_speed" {
   description = "The network speed for the virtual instance."
   type        = number
-  default     = 10000
+  default     = 1000
 }

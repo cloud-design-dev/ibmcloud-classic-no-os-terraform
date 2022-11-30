@@ -50,26 +50,22 @@ module "virtual-machines" {
 #   vsi_private_ip = module.virtual-machines[0].instance_private_ip
 # }
 
-module "gateway-appliances" {
-  depends_on   = [module.virtual-machines]
-  source       = "./modules/gateway-appliance"
-  datacenter   = var.datacenter
-  gateway_name = "${var.project}-gateway"
-  domain_name  = var.domain_name
-  public_vlan  = module.vlans.public_compute_vlan.id
-  private_vlan = module.vlans.private_compute_vlan.id
-  tags         = local.tags
-}
+# module "gateway-appliances" {
+#   depends_on   = [module.virtual-machines]
+#   source       = "./modules/gateway-appliance"
+#   datacenter   = var.datacenter
+#   gateway_name = "${var.project}-gateway"
+#   domain_name  = var.domain_name
+#   public_vlan  = module.vlans.public_compute_vlan.id
+#   private_vlan = module.vlans.private_compute_vlan.id
+#   tags         = local.tags
+# }
 
 # Setting to 1 for testing, so I don't have to wait for 4 hosts to provision.
 # Set to `var.host_count` when done and validated.
 module "bare-metal-hosts" {
-  depends_on   = [module.gateway-appliances]
-<<<<<<< HEAD
-  count        = 1 
-=======
-  count        = var.host_count
->>>>>>> 936c248aa59ccdac343625b5479ef54e18d67429
+  # depends_on   = [module.gateway-appliances]
+  count        = 1
   source       = "./modules/compute-bare-metal"
   name         = "${var.project}-vmware-host-${count.index}"
   datacenter   = var.datacenter
