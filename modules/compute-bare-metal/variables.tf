@@ -5,7 +5,7 @@ variable "private_vlan" {}
 variable "tags" {}
 variable "domain_name" {}
 variable "network_speed" {
-  description = "The network speed for the virtual instance."
+  description = "The network speed for the node instance."
   type        = number
-  default     = 1000
+  default     = 10000
 }

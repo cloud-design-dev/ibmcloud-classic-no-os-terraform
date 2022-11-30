@@ -46,6 +46,7 @@ module "ticket" {
   source          = "./modules/ticket"
   private_vlan_id = module.vlans.private_compute_vlan.id
   vsi_private_ip  = module.virtual-machines[0].instance_private_ip
+  datacenter   = var.datacenter
 }
 
 module "gateway-appliances" {
