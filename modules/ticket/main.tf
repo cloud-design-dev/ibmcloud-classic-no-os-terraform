@@ -17,8 +17,13 @@
 #   filename = "${path.cwd}/ticket.json"
 # }
 
+resource "null_resource" "login_to_ibmcli" {
+  provisioner "local-exec" {
+    command = "ibmcloud login -r ${var.datacenter}"
+  }
+
 resource "null_resource" "create_ticket" {
   provisioner "local-exec" {
-    command = "ibmcloud sl ticket create --title \"DHCP Helper IP\" --subject-id 1061 --body \"This is an example ticket used to test automation for a customer POC. Please disregard everything after this point: Set DHCP Helper IP to ${var.vsi_private_ip} on VLAN ${var.private_vlan_id}. \""
+    command = "ibmcloud sl ticket create --title \"DHCP Helper IP\" --subject-id 1061 --body \"Set DHCP Helper IP to ${var.vsi_private_ip} on VLAN ${var.private_vlan_id} in the ${var.datacenter} DC.\""
   }
 }
