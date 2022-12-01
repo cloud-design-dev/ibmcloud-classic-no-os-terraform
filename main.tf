@@ -15,6 +15,15 @@ resource "tls_private_key" "ssh" {
   rsa_bits  = 4096
 }
 
+resource "null_resource" "create_private_key" {
+  provisioner "local-exec" {
+    command = <<-EOT
+      echo '${tls_private_key.ssh.private_key_pem}' > ./'${var.project}'.pem
+      chmod 400 ./'${var.project}'.pem
+    EOT
+  }
+}
+
 resource "ibm_compute_ssh_key" "project" {
   label      = "${var.project}-sshkey"
   public_key = tls_private_key.ssh.public_key_openssh
@@ -46,7 +55,7 @@ module "ticket" {
   source          = "./modules/ticket"
   private_vlan_id = module.vlans.private_compute_vlan.id
   vsi_private_ip  = module.virtual-machines[0].instance_private_ip
-  datacenter   = var.datacenter
+  datacenter      = var.datacenter
 }
 
 module "gateway-appliances" {
@@ -60,8 +69,6 @@ module "gateway-appliances" {
   tags         = local.tags
 }
 
-# Setting to 1 for testing, so I don't have to wait for 4 hosts to provision.
-# Set to `var.host_count` when done and validated.
 module "bare-metal-hosts" {
   depends_on   = [module.gateway-appliances]
   count        = var.host_count
