@@ -19,7 +19,7 @@
 
 resource "null_resource" "login_to_ibmcli" {
   provisioner "local-exec" {
-    command = "ibmcloud login -r ${var.datacenter}"
+    command = "ibmcloud login --no-region"
   }
 }
 

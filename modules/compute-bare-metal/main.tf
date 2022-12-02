@@ -1,6 +1,6 @@
 resource "ibm_compute_bare_metal" "host" {
-  package_key_name       = "2U_DUAL_INTEL_XEON_E5V4_12_DRIVES"
-  process_key_name       = "INTEL_INTEL_XEON_8260_2_4_1U"
+  package_key_name       = "DUAL_INTEL_XEON_PROC_CASCADE_LAKE_SCALABLE_FAMILY_12_DRIVES"
+  process_key_name       = "INTEL_INTEL_XEON_8260_2_40"
   memory                 = 384
   os_key_name            = "OS_NO_OPERATING_SYSTEM"
   hostname               = var.name
